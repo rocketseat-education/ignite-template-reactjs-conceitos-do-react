@@ -96,7 +96,7 @@ describe('App Page', () => {
     expect(addedSecondTaskTitle).toBeInTheDocument();
   })
 
-  it('should be able to complete a task', () => {
+  it('should be able to check a task', () => {
     render(<TaskList />);
 
     const taskInput = screen.getByPlaceholderText('Adicionar novo todo');
