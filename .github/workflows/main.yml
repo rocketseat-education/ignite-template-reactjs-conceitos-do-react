@@ -27,13 +27,15 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2    
       - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: install
+      - uses: actions/checkout@v2    
       - uses: borales/actions-yarn@v2.0.0
         with:
-          cmd: test    
+          cmd: test 
+      - uses: actions/checkout@v2    
       - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: build 
