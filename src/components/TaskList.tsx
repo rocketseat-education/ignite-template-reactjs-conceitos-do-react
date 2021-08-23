@@ -22,16 +22,16 @@ export function TaskList() {
 
   function handleToggleTaskCompletion(id: number) {
     let newTasks = [...tasks]
-    const uncheckedTask = newTasks.find((task)=>(task.id === id));
-    if (!!uncheckedTask){
-      const task = {id, title: uncheckedTask.title, isComplete: true }
-      const index = newTasks.indexOf(uncheckedTask);
+    const toggleTask = newTasks.find((task)=>(task.id === id));
+    if (!!toggleTask){
+      const task = {id, title: toggleTask.title, isComplete: !toggleTask.isComplete }
+      const index = newTasks.indexOf(toggleTask)
       console.log(index)
       if (index > -1) {
-        newTasks.splice(index, 1);
+        newTasks.splice(index, 1)
         newTasks.push(task)
       }
-      setTasks(newTasks);
+      setTasks(newTasks)
     }}
 
   function handleRemoveTask(id: number) {
