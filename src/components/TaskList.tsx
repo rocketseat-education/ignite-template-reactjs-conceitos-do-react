@@ -13,7 +13,7 @@ interface Task {
 
 export function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [newTaskTitle, setNewTaskTitle] = useState('');
+  const [newTaskTitle, setNewTaskTitle] = useState('')
 
   function handleCreateNewTask() {
     if (!!newTaskTitle){
@@ -40,9 +40,9 @@ export function TaskList() {
     if(!!taskToRemove){
       const index = newTasks.indexOf(taskToRemove)
       if (index > -1) {
-        newTasks.splice(index, 1);
+        newTasks.splice(index, 1)
       }
-      setTasks(newTasks);
+      setTasks(newTasks)
     }
   }
 
