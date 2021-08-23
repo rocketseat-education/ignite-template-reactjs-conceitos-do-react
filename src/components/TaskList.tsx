@@ -21,8 +21,18 @@ export function TaskList() {
   }
 
   function handleToggleTaskCompletion(id: number) {
-    // Altere entre `true` ou `false` o campo `isComplete` de uma task com dado ID
-    }
+    let newTasks = [...tasks]
+    const uncheckedTask = newTasks.find((task)=>(task.id === id));
+    if (!!uncheckedTask){
+      const task = {id, title: uncheckedTask.title, isComplete: true }
+      const index = newTasks.indexOf(uncheckedTask);
+      console.log(index)
+      if (index > -1) {
+        newTasks.splice(index, 1);
+        newTasks.push(task)
+      }
+      setTasks(newTasks);
+    }}
 
   function handleRemoveTask(id: number) {
     // Remova uma task da listagem pelo ID
