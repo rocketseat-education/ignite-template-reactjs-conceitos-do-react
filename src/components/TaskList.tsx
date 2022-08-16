@@ -16,14 +16,32 @@ export function TaskList() {
 
   function handleCreateNewTask() {
     // Crie uma nova task com um id random, não permita criar caso o título seja vazio.
+    setTasks([...tasks,{
+      id: Math.floor(Math.random()*100) +1,
+      title: newTaskTitle,
+      isComplete: false
+    }])
+
+    setNewTaskTitle('');
   }
 
   function handleToggleTaskCompletion(id: number) {
     // Altere entre `true` ou `false` o campo `isComplete` de uma task com dado ID
+    const newTaskArray = tasks.map(task => {
+      if(task.id === id){
+        task.isComplete = !task.isComplete
+      }         
+      return task;
+    });
+    setTasks(newTaskArray);
   }
 
   function handleRemoveTask(id: number) {
     // Remova uma task da listagem pelo ID
+    const newTaskArray = tasks.filter(task => task.id !== id)
+
+    setTasks(newTaskArray)
+    
   }
 
   return (
@@ -38,7 +56,16 @@ export function TaskList() {
             onChange={(e) => setNewTaskTitle(e.target.value)}
             value={newTaskTitle}
           />
-          <button type="submit" data-testid="add-task-button" onClick={handleCreateNewTask}>
+            {/* 
+              *  Impredindo que o usuário possa enviar uma string vazia
+              *  e também uma string contendo somente espaços em braco.
+            */}
+          <button 
+            type="submit" 
+            data-testid="add-task-button" 
+            disabled={!newTaskTitle.trim() || newTaskTitle.length === 0} 
+            onClick={handleCreateNewTask}
+          >
             <FiCheckSquare size={16} color="#fff"/>
           </button>
         </div>
